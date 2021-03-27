@@ -1,0 +1,44 @@
+{% if pirmas_skiepas %}
+
+<h1>Pirmu skiepu paskiepyti:</h1>
+
+{%  for person in persons %}
+
+<p>{{person.pavarde}} {{person.vardas}} {{person.asmens_kodas}}  {{person.data|date:"Y-m-d" }}</p>
+
+{%  endfor  %}
+
+{% endif %}
+
+
+
+
+
+{% if antras_skiepas %}
+
+<h1>Antru skiepu paskiepyti:</h1>
+
+{%  for person in persons %}
+
+<p>{{person.pavarde}} {{person.vardas}} {{person.asmens_kodas}} {{person.data|date:"Y-m-d" }}</p>
+
+{%  endfor  %}
+
+
+
+{% endif %}
+
+
+{% if persirgo %}
+
+<h1>Persirgo:</h1>
+
+{%  for person in persons %}
+
+<p>{{person.pavarde}} {{person.vardas}} {{person.asmens_kodas}}  {{person.data|date:"Y-m-d" }}</p>
+
+{%  endfor  %}
+
+
+
+{% endif %}

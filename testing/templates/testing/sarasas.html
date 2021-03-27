@@ -1,0 +1,41 @@
+{% extends 'testing/base.html'  %}
+
+
+{% block content%}
+
+
+
+<form method="POST" action="sarasas">
+    {% csrf_token %}
+    <br>
+    <p>Tie kas:</p>
+<select name='sarasas'>
+    {% for sarasas in Sarasai %}
+    <option value='{{sarasas.value}}'>{{sarasas.tipas}}</option>
+
+    {% endfor %}
+</select>
+
+<br>
+<p>Išskyrus tuos kas:</p>
+<select name='isskyrus'>
+    <option value='nieko_nepasirinkta'>--------</option>
+    {% for sarasas in Sarasai %}
+    <option value='{{sarasas.value}}'>{{sarasas.tipas}}</option>
+
+    {% endfor %}
+</select>
+<br>
+<br>
+<input type='submit'>
+</form>
+
+<h2>Sąrašas:</h2>
+{% for person in Sarasas %}
+    {{person.vardas}} {{person.pavarde}} {{person.asmens_kodas}} {{person.data|date:"Y-m-d" }}
+    <br>
+
+    {% endfor %}
+
+
+{% endblock %}

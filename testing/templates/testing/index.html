@@ -1,0 +1,110 @@
+{% extends 'testing/base.html'  %}
+
+
+{% block content%}
+<h2>Pradinis darbuotojo įvedimas:</h2>
+<form method="POST" action="enter_person">
+    {% csrf_token %}
+
+<input type='text' name='vardas' placeholder="Vardas" required>
+<br>
+<br>
+<input type='text' name='pavarde' placeholder="Pavardė" required>
+<br>
+<br>
+<input type='text' name='asmens_kodas' placeholder="Asmens kodas" required>
+<br>
+<br>
+<select name='tipas'>
+    {% for order in orders %}
+    <option value='{{order.value}}'>{{order.tipas}}</option>
+
+    {% endfor %}
+</select>
+<br>
+<br>
+<input type='date' name='data' required>
+<br>
+<br>
+<input type="submit">
+</form>
+
+<h2>Darbuotojų testavimo sekimas:</h2>
+<h3>Perspėjimas:</h3>
+
+
+{% for person in warning_list  %}
+<table>
+<tr>
+<form method="POST" action="update_person">
+    {% csrf_token %}
+
+    <input type='hidden' name='id_number' value="{{person.id}}">
+    <input type='hidden' name='vardas' value="{{person.vardas}}">
+    <input type='hidden' name='pavarde' value="{{person.pavarde}}">
+    <input type='hidden' name='asmens_kodas' value="{{person.asmens_kodas}}">
+
+
+<td class="person">{{person}}</td> 
+<td class="kodas">{{person.asmens_kodas}}</td> 
+<td class="tipas">{{person.tipas}}</td> 
+<td class="data">{{person.data|date:"Y-m-d" }}</td>
+<td class="select">
+    <select class="type_select" name='tipas'>
+        {% for order in orders %}
+        <option value='{{order.value}}'>{{order.tipas}}</option>
+    
+        {% endfor %}
+    </select>
+</td>
+<td class="data_edit"><input class="type_data" type='date' name='data' required></td>
+
+
+<td class="submit"><input class="type_submit" type='submit'></td>
+
+</form>
+</tr>
+</table>
+
+{% endfor %}
+
+<h3>Pavojus:</h3>
+
+
+
+{% for person in danger_list  %}
+<table>
+<tr>
+    <form method="POST" action="update_person">
+        {% csrf_token %}
+    
+    <input type='hidden' name='id_number' value="{{person.id}}">
+    <input type='hidden' name='vardas' value="{{person.vardas}}">
+    <input type='hidden' name='pavarde' value="{{person.pavarde}}">
+    <input type='hidden' name='asmens_kodas' value="{{person.asmens_kodas}}">
+    
+    
+    <td>{{person}}</td>
+    <td>{{person.asmens_kodas}}</td>  
+    <td>{{person.tipas}}</td> 
+    <td>{{person.data|date:"Y-m-d" }}</td>
+    <td>
+        <select name='tipas'>
+            {% for order in orders %}
+            <option value='{{order.value}}'>{{order.tipas}}</option>
+        
+            {% endfor %}
+        </select>
+    </td>
+    <td><input type='date' name='data' required></td>
+    
+    
+    <td><input type='submit'></td>
+    
+    </form>
+    </tr>
+    </table>
+
+{% endfor %}
+
+{% endblock %}

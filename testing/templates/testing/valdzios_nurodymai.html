@@ -1,0 +1,40 @@
+{% extends 'testing/base.html'  %}
+
+
+{% block content%}
+
+<h2>Valdžios nurodymas:</h2>
+
+<form method="POST" action='valdzios_nurodymai_enter'>
+    {% csrf_token %}
+    <input type="text" name='tipas' placeholder='Tipas' required>
+    <br>
+    <br>
+    <input type="text" name='skaicius' placeholder='Dienų skaičius' required>
+    <br>
+    <br>
+    <input type='submit'>
+
+
+</form>
+
+
+<h2>Valdžios nurodymų pakeitimai:</h2>
+
+{% for nurodymas in Nurodymai %}
+
+<form method="POST" action='valdzios_nurodymai_update'>
+    {% csrf_token %}
+    {{nurodymas.tipas}}
+    <input type='hidden' name='id' value='{{nurodymas.id}}' required>
+    <input type="text" name='skaicius' value='{{nurodymas.dienu_skaicius}}' required>
+
+    <input type='submit'>
+
+
+</form>
+
+
+{%endfor%}
+
+{% endblock %}

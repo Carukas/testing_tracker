@@ -1,0 +1,74 @@
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: bisque;
+}
+
+
+
+
+input{
+    width: 200px;
+    display:inline-block;
+}
+
+select{
+    width: 200px;
+    display:inline-block;
+}
+
+
+a:link {
+    color: black;
+  }
+  
+
+  a:visited {
+    color: black;
+  }
+  
+
+  a:hover {
+    color: grey;
+  }
+  
+
+  a:active {
+    color: black;
+
+
+  }
+
+.person{
+  width: 250;
+}
+.kodas{
+  width: 130;
+}
+.tipas{
+  width: 130;
+}
+.data{
+  width: 130;
+}
+.select{
+  width: 130;
+}
+.type_select{
+  width: 130;
+}
+.data{
+  width: 130;
+}
+.type_data{
+  width: 130;
+}
+.submit{
+  width: 130;
+}
+.type_submit{
+  width: 130;
+}
+
+
+
+
